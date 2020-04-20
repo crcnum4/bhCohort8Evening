@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Select } from "react-materialize";
 
 class ResourceForm extends Component {
   state = {
@@ -72,20 +73,18 @@ class ResourceForm extends Component {
             value={this.state.resourceAuthor}
             onChange={this.handleChange}
           />
-          <div>
-            <select
-              id="authorSkillLevel"
-              value={this.state.authorSkillLevel}
-              onChange={this.handleChange}
-            >
-              <option value="" disabled>
-                Author skill level
-              </option>
-              <option value="Intro">Intro</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-            </select>
-          </div>
+          <Select
+            id="authorSkillLevel"
+            value={this.state.authorSkillLevel}
+            onChange={this.handleChange}
+          >
+            <option value="" disabled>
+              Author skill level
+            </option>
+            <option value="Intro">Intro</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </Select>
           <input
             style={styles.input}
             id="cohort"
@@ -158,7 +157,7 @@ class ResourceForm extends Component {
             value={this.state.rating}
             onChange={(e) => this.handleChange(e)}
           />
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
     );

@@ -5,7 +5,7 @@ const Resource = ({ resource }) => {
 
   return (
     <div className={"box"}>
-      <h2>{resource.title}</h2>
+      <h2 className={"resourceTitle"}>{resource.title}</h2>
       <p>{resource.resourceAuthor}</p>
       <p>Published on: {resource.datePublished}</p>
       {resource.videoLength ? (
