@@ -38,15 +38,19 @@
 }
 
 .box {
-  border: 1px solid #f6f6f6;
+  border: 1px solid #171717;
   border-bottom-width: 0;
   border-radius: 20px;
-  box-shadow: 1px 10px 20px #000000;
   margin-bottom: 25px;
-  max-width: 600px;
-  width: 80%;
   padding: 0 8px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 5px 3px 5px #000000;
   background-color: #f7f7f7;
+}
+
+.box:hover {
+  box-shadow: 15px 9px 15px black;
 }
 
 .resourceList {
@@ -59,15 +63,26 @@
 
 .header {
   display: flex;
-  padding-left: 2rem;
+  flex-direction: row;
+  padding: 0 2rem;
   margin-bottom: 1.5rem;
   background-color: seagreen;
 }
 
 .title {
+  display: flex;
+  flex: 1;
   font-size: 3rem;
   font-family: cursive;
   font-weight: bold;
   text-shadow: 1px 8px 16px black;
   color: black;
+}
+
+.navigation {
+  display: flex;
+  padding: 0 16px;
+  margin-right: 8%;
+  justify-content: center;
+  align-items: center;
 }
