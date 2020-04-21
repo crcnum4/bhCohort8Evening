@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Resource from "./components/Resource";
+import ResourceList from "./components/ResourceList";
+import Navbar from "./components/Navbar";
 import resources from "./mock/resources";
 
 import ResourceForm from "./components/ResourceForm";
@@ -23,26 +25,22 @@ class App extends Component {
     });
   };
 
-  renderPosts = () => {
-    const display = this.state.resources.map((resource) => {
-      return <Resource resource={resource} key={resource.title} />;
-    });
-
-    return display;
-  };
-
   render() {
     return (
-      <div className="App">
-        <div className="header">
-          <h1 className="title">Welcome to BrainHive!</h1>
-          <div className="navigation">
-            <a href="">Add Resource</a>
-          </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <ResourceList resources={this.state.resources} />
+            </Route>
+            <Route path="/addResource">
+              <ResourceForm addResource={this.addResource} />
+            </Route>
+          </Switch>
+          <p>Footer</p>
         </div>
-        <div className="resourceList">{this.renderPosts()}</div>
-        <ResourceForm addResource={this.addResource} />
-      </div>
+      </BrowserRouter>
     );
   }
 }

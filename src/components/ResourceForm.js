@@ -184,7 +184,9 @@ const styles = {
   button: {
     alignSelf: "center",
     // backgroundColor: "#F96295",
-    backgroundColor: "#ff62a1",
+    backgroundColor: "blue",
+    color: "white",
+    fontWeight: "bold",
     marginLeft: 5,
     marginRight: 5,
     marginBottom: 10,
