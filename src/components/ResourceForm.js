@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import Button from "./common/Button";
 
 class ResourceForm extends Component {
   state = {
+    id: 0,
     posterName: "",
     resourceAuthor: "",
     authorSkillLevel: "",
@@ -157,9 +159,7 @@ class ResourceForm extends Component {
             value={this.state.rating}
             onChange={(e) => this.handleChange(e)}
           />
-          <button style={styles.button} type="submit">
-            Submit
-          </button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
     );
@@ -180,22 +180,6 @@ const styles = {
     height: 32,
     fontSize: 20,
     marginBottom: 8,
-  },
-  button: {
-    alignSelf: "center",
-    // backgroundColor: "#F96295",
-    backgroundColor: "blue",
-    color: "white",
-    fontWeight: "bold",
-    marginLeft: 5,
-    marginRight: 5,
-    marginBottom: 10,
-    marginTop: 5,
-    width: "50%",
-    borderRadius: 10,
-    fontSize: 16,
-    paddingTop: 10,
-    paddingBottom: 10,
   },
 };
 
