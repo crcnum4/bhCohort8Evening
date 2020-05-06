@@ -51,7 +51,7 @@ const resources = [
     categories: ["React", "Redux"],
     summary:
       "A good resouce on building a couple react apps with and without redux",
-    link: "www.google.com/search?q=NetNinja%20React",
+    link: "http://www.google.com/search?q=NetNinja%20React",
     resourceType: "Playlist",
     datePublished: "2018-09-10.00:00:00.000z",
     videoLength: null,
@@ -113,8 +113,7 @@ const resources = [
     title: "MongoDb",
     categories: ["MongoDB"],
     summary: "A good resouce on building a couple  apps with MongoDB",
-    link:
-      "https://www.youtube.com/watch?v=9OPP_1eAENg&list=PL4cUxeGkcC9jpvoYriLI0bY8DOgWZfi6u",
+    link: "https://www.youtube.com/watch?v=9OPP_1eAENg",
     resourceType: "Video",
     datePublished: "2018-09-10.00:00:00.000z",
     videoLength: null,
@@ -135,8 +134,7 @@ const resources = [
     categories: ["Redux"],
     summary:
       "First Tutorial in a full React + Redux series.  We understand Redux fundamentals like store , dispatch actions and reducer.  Why we use it and how it works with  frameworks like react, angular and ember. ",
-    link:
-      "https://www.youtube.com/watch?v=7Erbf5NXQQw&list=PL7pEw9n3GkoWgIc-Ambc-QZGcTKEei2O3",
+    link: "https://www.youtube.com/watch?v=7Erbf5NXQQw",
     resourceType: "Playlist",
     datePublished: "2018-09-10.00:00:00.000z",
     videoLength: null,
@@ -174,7 +172,7 @@ const resources = [
     authorsSkillLevel: "advanced",
     cohort: "8",
     title: "React - The Complete Guide (incl Hooks, React Router, Redux)",
-    category: "React",
+    categories: ["React"],
     summary:
       "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!",
     link: "https://www.udemy.com/course/react-the-complete-guide-incl-redux/",
