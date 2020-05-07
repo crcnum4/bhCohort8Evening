@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { increment } from "../actions";
 import Resource from "./Resource";
 
 /*
@@ -15,18 +17,25 @@ class ResourceList extends Component {
   handleChange = (e) => {
     const query = e.target.value;
     const newList = this.props.resources.filter(
-      (resource) =>
-        resource.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
-        resource.summary.toLowerCase().indexOf(query.toLowerCase()) >= 0
-      //   return true;
-      // }
-      // return false;
+      (resource) => {
+        const index = resource.title.toLowerCase().indexOf(query.toLowerCase());
+        if (index >= 0) {
+          return true;
+        }
+        return false;
+      }
+      // resource.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+      // resource.summary.toLowerCase().indexOf(query.toLowerCase()) >= 0
     );
 
     this.setState({
       query,
       searchedResources: newList,
     });
+  };
+
+  handleClick = () => {
+    this.props.increment(this.props.count);
   };
 
   renderPosts = () => {
@@ -55,7 +64,11 @@ class ResourceList extends Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className="resourceList">{this.renderPosts()}</div>;
+        <div className="resourceList">{this.renderPosts()}</div>
+        <div>
+          <button onClick={this.handleClick}>add</button>
+          <p>{this.props.count}</p>
+        </div>
       </div>
     );
   }
@@ -77,10 +90,12 @@ const myStyles = {
   },
 };
 
-const mapStateToProps = (state) => {
+const mapStoreToProps = (store) => {
   return {
-    item: state.resources,
+    count: store.resources.count,
   };
 };
 
-export default ResourceList;
+export default connect(mapStoreToProps, {
+  increment,
+})(ResourceList);

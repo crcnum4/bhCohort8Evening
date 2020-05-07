@@ -1,16 +1,19 @@
-const INITIAL_STATE = {
+const INITIAL_STORE = {
   list: [],
   loading: true,
   errors: {},
+  count: 0,
+  smile: true,
 };
 
-export default (state = INITIAL_STATE, action) => {
+export default (store = INITIAL_STORE, action) => {
   switch (action.type) {
-    case "pushtolist":
+    case "INCREMENT":
       return {
-        list: [...state.list, action.payload],
+        ...store,
+        count: action.payload,
       };
     default:
-      return state;
+      return store;
   }
 };
