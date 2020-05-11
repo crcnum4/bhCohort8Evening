@@ -69,6 +69,10 @@ class ResourceList extends Component {
           <button onClick={this.handleClick}>add</button>
           <p>{this.props.count}</p>
         </div>
+        <div>
+          <button>toggle</button>
+          <p>:) :(</p>
+        </div>
       </div>
     );
   }

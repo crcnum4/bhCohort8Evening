@@ -3,7 +3,6 @@ const INITIAL_STORE = {
   loading: true,
   errors: {},
   count: 0,
-  smile: true,
 };
 
 export default (store = INITIAL_STORE, action) => {
