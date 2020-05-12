@@ -11,12 +11,12 @@ import Resource from "./Resource";
 class ResourceList extends Component {
   state = {
     query: "",
-    searchedResources: [...this.props.resources],
+    searchedResources: [...this.props.resources.list],
   };
 
   handleChange = (e) => {
     const query = e.target.value;
-    const newList = this.props.resources.filter(
+    const newList = this.props.resources.list.filter(
       (resource) => {
         const index = resource.title.toLowerCase().indexOf(query.toLowerCase());
         if (index >= 0) {
@@ -40,13 +40,7 @@ class ResourceList extends Component {
 
   renderPosts = () => {
     const display = this.state.searchedResources.map((resource) => {
-      return (
-        <Resource
-          resource={resource}
-          key={resource.id}
-          onSelect={this.props.onSelect}
-        />
-      );
+      return <Resource resource={resource} key={resource.id} />;
     });
 
     return display;
@@ -68,10 +62,6 @@ class ResourceList extends Component {
         <div>
           <button onClick={this.handleClick}>add</button>
           <p>{this.props.count}</p>
-        </div>
-        <div>
-          <button>toggle</button>
-          <p>:) :(</p>
         </div>
       </div>
     );
@@ -97,6 +87,7 @@ const myStyles = {
 const mapStoreToProps = (store) => {
   return {
     count: store.resources.count,
+    resources: store.resources,
   };
 };
 

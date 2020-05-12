@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { useParams, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import Button from "./common/Button";
 
 class ViewCourse extends Component {
@@ -54,9 +55,11 @@ class ViewCourse extends Component {
   };
 
   render() {
-    const { course } = this.props;
-    // const { courseId } = useParams();
-    const { courseId } = this.props.match.params;
+    // const { course } = this.props;
+    const courseId = parseInt(this.props.match.params.courseId);
+    const course = this.props.resources.list.find(
+      (item) => item.id === courseId
+    );
     console.log(courseId);
     return (
       <div>
@@ -121,4 +124,10 @@ const myStyles = {
   },
 };
 
-export default withRouter(ViewCourse);
+const mapStoreToProps = (store) => {
+  return {
+    resources: store.resources,
+  };
+};
+
+export default connect(mapStoreToProps)(withRouter(ViewCourse));

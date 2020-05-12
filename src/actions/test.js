@@ -12,3 +12,4 @@ const calculator = (operator, num) => {
 };
 
 console.log(calculator("+", 8)(5));
+console.log(calculator("+", 3)(5));

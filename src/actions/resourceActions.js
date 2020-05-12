@@ -1,6 +1,8 @@
+import { INCREMENT } from "./types";
+
 export const increment = (count) => (dispatch) => {
   dispatch({
-    type: "INCREMENT",
+    type: INCREMENT,
     payload: count + 1,
   });
 };
