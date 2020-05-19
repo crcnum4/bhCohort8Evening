@@ -1,0 +1,15 @@
+<data>
+  <key>value</key>
+  <name>Cliff</name>
+  <age>30</name>
+  <items>
+    <item>
+     <name>coffee</name>
+     <qty>2</qty>
+    </item>
+    <item>
+      <name>laptop</name>
+      <qty>4</qty>
+    </item>
+  </items>
+</data>

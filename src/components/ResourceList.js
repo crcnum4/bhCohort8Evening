@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { increment } from "../actions";
+import { increment, changeQuery } from "../actions";
 import Resource from "./Resource";
 
 /*
@@ -32,6 +32,7 @@ class ResourceList extends Component {
       query,
       searchedResources: newList,
     });
+    this.props.changeQuery(query, this.props.resources.list)
   };
 
   handleClick = () => {
@@ -39,7 +40,7 @@ class ResourceList extends Component {
   };
 
   renderPosts = () => {
-    const display = this.state.searchedResources.map((resource) => {
+    const display = this.props.search.list.map((resource) => {
       return <Resource resource={resource} key={resource.id} />;
     });
 
@@ -55,6 +56,7 @@ class ResourceList extends Component {
             style={myStyles.input}
             type="text"
             placeholder="🔍 Search Titles"
+            value={this.props.search.query}
             onChange={this.handleChange}
           />
         </div>
@@ -88,9 +90,11 @@ const mapStoreToProps = (store) => {
   return {
     count: store.resources.count,
     resources: store.resources,
+    search: store.search
   };
 };
 
 export default connect(mapStoreToProps, {
   increment,
+  changeQuery
 })(ResourceList);

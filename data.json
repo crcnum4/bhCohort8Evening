@@ -1,0 +1,15 @@
+{
+  "key": "value",
+  "name": "cliff",
+  "age": 30,
+  "inventory": [
+    { 
+      "name": "coffee",
+      "qty": 2
+    },
+    { 
+      "name": "Laptop",
+      "qty": 4
+    }
+  ]
+}
