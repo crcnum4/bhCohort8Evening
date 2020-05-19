@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { increment, changeQuery } from "../actions";
 import Resource from "./Resource";
@@ -8,66 +8,43 @@ import Resource from "./Resource";
   this does not have state because...
 */
 
-class ResourceList extends Component {
-  state = {
-    query: "",
-    searchedResources: [...this.props.resources.list],
+const ResourceList = (props) => {
+
+  const handleChange = (e) => {
+    props.changeQuery(e.target.value, props.resources.list)
   };
 
-  handleChange = (e) => {
-    const query = e.target.value;
-    const newList = this.props.resources.list.filter(
-      (resource) => {
-        const index = resource.title.toLowerCase().indexOf(query.toLowerCase());
-        if (index >= 0) {
-          return true;
-        }
-        return false;
-      }
-      // resource.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
-      // resource.summary.toLowerCase().indexOf(query.toLowerCase()) >= 0
-    );
-
-    this.setState({
-      query,
-      searchedResources: newList,
-    });
-    this.props.changeQuery(query, this.props.resources.list)
+  const handleClick = () => {
+    props.increment(props.count);
   };
 
-  handleClick = () => {
-    this.props.increment(this.props.count);
-  };
-
-  renderPosts = () => {
-    const display = this.props.search.list.map((resource) => {
+  const renderPosts = () => {
+    const display = props.search.list.map((resource) => {
       return <Resource resource={resource} key={resource.id} />;
     });
 
     return display;
   };
 
-  render() {
-    return (
-      <div>
-        {/* TODO: add search bar */}
-        <div style={myStyles.searchBar}>
-          <input
-            style={myStyles.input}
-            type="text"
-            placeholder="🔍 Search Titles"
-            value={this.props.search.query}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="resourceList">{this.renderPosts()}</div>
-        <div>
-          <button onClick={this.handleClick}>add</button>
-          <p>{this.props.count}</p>
-        </div>
+  return (
+    <div>
+      {/* TODO: add search bar */}
+      <div style={myStyles.searchBar}>
+        <input
+          style={myStyles.input}
+          type="text"
+          placeholder="🔍 Search Titles"
+          value={props.search.query}
+          onChange={handleChange}
+        />
       </div>
-    );
-  }
+      <div className="resourceList">{renderPosts()}</div>
+      <div>
+        <button onClick={handleClick}>add</button>
+        <p>{props.count}</p>
+      </div>
+    </div>
+  );
 }
 
 const myStyles = {
