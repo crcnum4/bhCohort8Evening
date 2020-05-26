@@ -9,30 +9,16 @@ import Resource from "./Resource";
 */
 
 class ResourceList extends Component {
-  state = {
-    query: "",
-    searchedResources: [...this.props.resources.list],
-  };
 
-  handleChange = (e) => {
-    const query = e.target.value;
-    const newList = this.props.resources.list.filter(
-      (resource) => {
-        const index = resource.title.toLowerCase().indexOf(query.toLowerCase());
-        if (index >= 0) {
-          return true;
-        }
-        return false;
-      }
-      // resource.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
-      // resource.summary.toLowerCase().indexOf(query.toLowerCase()) >= 0
-    );
+  componentDidMount = () => {
+    console.log('COMPONENT_MOUNT')
+    if (this.props.search.list.length === 0) {
+      this.props.changeQuery('', this.props.resources.list)
+    }
+  }
 
-    this.setState({
-      query,
-      searchedResources: newList,
-    });
-    this.props.changeQuery(query, this.props.resources.list)
+  handleChange = (e) => {    
+    this.props.changeQuery(e.target.value, this.props.resources.list)
   };
 
   handleClick = () => {

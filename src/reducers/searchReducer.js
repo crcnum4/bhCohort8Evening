@@ -2,7 +2,7 @@ import {CHANGE_QUERY} from '../actions/types'
 import resources from "../mock/resources";
 
 const INITIAL_STORE = {
-  list: [...resources],
+  list: [],
   query: "",
   loading: false,
   errors: {}

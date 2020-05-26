@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { useParams, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "./common/Button";
+import BorderCard from "./common/BorderCard";
 
 class ViewCourse extends Component {
   state = {
@@ -17,10 +18,10 @@ class ViewCourse extends Component {
   renderComments = (course) => {
     return course.comments.map((comment) => {
       return (
-        <div className="box">
+        <BorderCard hoverable style={{ maxWidth: 400 }}>
           <p>{comment.user}: </p>
           <p>{comment.text}</p>
-        </div>
+        </BorderCard>
       );
     });
   };
@@ -62,7 +63,9 @@ class ViewCourse extends Component {
     );
     console.log(courseId);
     return (
-      <div>
+      <BorderCard
+        style={{ maxWidth: 1200, marginLeft: "auto", marginRight: "auto" }}
+      >
         <h3>{course.title}</h3>
         <h4>{course.resourceAuthor}</h4>
         <div style={myStyles.row}>
@@ -83,8 +86,10 @@ class ViewCourse extends Component {
         <Button onClick={this.handleClick} buttonStyle={myStyles.button}>
           {this.state.showComments ? "Hide Comments" : "Show Comments"}
         </Button>
-        {this.state.showComments ? this.renderComments(course) : null}
-      </div>
+        <div className="resourceList">
+          {this.state.showComments ? this.renderComments(course) : null}
+        </div>
+      </BorderCard>
     );
   }
 }

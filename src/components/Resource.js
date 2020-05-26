@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import BorderCard from "./common/BorderCard";
 
 /*
   in charge of displaying resource details and detecting a click
@@ -23,7 +24,7 @@ class Resource extends Component {
     // const {resource} = props;
 
     return (
-      <div className={"box"} onClick={this.handleClick}>
+      <BorderCard onClick={this.handleClick} hoverable>
         {this.state.clicked ? (
           <Redirect to={`/viewCourse/${resource.id}`} />
         ) : null}
@@ -35,7 +36,7 @@ class Resource extends Component {
         ) : null}
         {/* conditional ? true code : false code */}
         <p>Comments: {resource.comments.length}</p>
-      </div>
+      </BorderCard>
     );
   }
 }
